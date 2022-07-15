@@ -1,0 +1,116 @@
+<%- include('./includes/_header.ejs') %>
+
+<main>
+  <div class="t-container">
+    <div class="d-flex align-items-center mb-3 controls">
+      <form class="form-add-task" form-add-task>
+        <button
+          type="submit"
+          class="d-block btn btn-success text-white btn-add-new"
+          disabled="true"
+          btn-add-task
+        >
+          Add New
+        </button>
+        <input
+          type="text"
+          class="form-control h-100"
+          name="name"
+          placeholder="Type here..."
+          input-add-task
+        />
+      </form>
+      <button
+        class="d-block btn btn-filter"
+        data-bs-toggle="collapse"
+        data-bs-target="#filter-box"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="gray"
+          width="20px"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="collapse" id="filter-box">
+      <form form-filter>
+        <div class="form-check">
+          <label class="form-check-label" for="all-ts"> All tasks </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            id="all-ts"
+            name="filter"
+            value="1"
+          />
+        </div>
+
+        <div class="form-check">
+          <label class="form-check-label" for="completed-ts">
+            Completed tasks
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            id="completed-ts"
+            name="filter"
+            value="2"
+          />
+        </div>
+
+        <div class="form-check">
+          <label class="form-check-label" for="uncompleted-ts">
+            Uncompleted tasks
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            id="uncompleted-ts"
+            name="filter"
+            checked
+            value="3"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="align-items-center mb-3 actions-selected-tasks" actions-selected-tasks>
+      <select class="form-select select-action" select-action>
+        <option selected value="0">-- select action --</option>
+        <option value="1">Delete</option>
+        <option value="2">Completed</option>
+      </select>
+      <button type="button" disabled="disabled" class="btn btn-primary" btn-apply-action >Apply</button>
+    </div>
+    <div class="parent-table">
+      <table class="text-center table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>
+              <input type="checkbox" input-select-all class="form-check-input">
+            </th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody fetch-data-tasks>
+          <tr class="tr-loading">
+            <td class="td-loading">
+              <div class="loading"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="loading p-loading" loading></div>
+    </div>
+  </div>
+</main>
+
+<%- include('./includes/_footer.ejs') %>

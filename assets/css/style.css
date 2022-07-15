@@ -1,0 +1,147 @@
+body {
+  font-family: sans-serif;
+  overflow-y: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 95vh;
+}
+
+button {
+  background-color: transparent;
+}
+
+.t-container {
+  max-width: 950px;
+  width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.form-add-task {
+  display: flex;
+  column-gap: 15px;
+  flex: 1;
+}
+
+.form-add-task input {
+  flex: 1;
+  border-radius: 4px;
+  outline: none;
+}
+
+.controls {
+  height: 35px;
+  column-gap: 10px;
+}
+
+.actions-selected-tasks {
+  column-gap: 1rem;
+  display: none;
+}
+
+.actions-selected-tasks.active {
+  display: flex;
+}
+
+.select-action {
+  flex: 1;
+}
+
+.parent-table {
+  position: relative;
+  max-height: 450px;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.parent-table table thead {
+  position: sticky;
+  top: 0;
+}
+
+.parent-table table tr td {
+  cursor: pointer;
+}
+
+.parent-table table tr th {
+  min-width: 150px;
+}
+
+.parent-table table .tr-loading,
+.parent-table table .td-loading {
+  background-color: transparent !important;
+  box-shadow: none;
+  border: none;
+}
+
+.parent-table table tr.completed,
+.parent-table table tr.completed td {
+  background-color: #d5ffd5;
+  box-shadow: none;
+}
+
+.no-tasks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: bold;
+  opacity: 0.3;
+  user-select: none;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading::before,
+.loading::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  content: "";
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 5;
+}
+
+.loading::before {
+  border: 5px solid #fafafa;
+}
+
+.loading::after {
+  border-top: 5px solid #1771f1;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #1771f1;
+  border-right: 5px solid transparent;
+  animation: loading .5s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.p-loading {
+  display: none;
+}
+
+.p-loading.active {
+  display: block;
+}
